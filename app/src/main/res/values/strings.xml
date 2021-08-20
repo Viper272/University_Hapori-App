@@ -1,12 +1,16 @@
 <resources>
     <string name="app_name">HaporiApplication</string>
     <string name="action_settings">Settings</string>
+
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <!-- Fragment 1 -->
+    <string name="emergencyNow">If an emergency is happening now, call 111</string>
+    <string name="emergencyHappened">If an emergency has already happened, call 105</string>
+    <string name="noEmergency">If there is no emergency click next</string>
+
 </resources>

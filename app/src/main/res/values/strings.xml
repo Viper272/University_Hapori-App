@@ -11,6 +11,8 @@
     <!-- Fragment 1 -->
     <string name="title">Hāpori\nSupport</string>
     <string name="emergencyNow">If an emergency is happening now, call 111</string>
+    <string name="call_111">Button to call the emergency number</string>
+    <string name="call_105">Button to call the non-emergency number</string>
     <string name="emergencyHappened">If an emergency has already happened, call 105</string>
     <string name="noEmergency">If there is no emergency click next</string>
 

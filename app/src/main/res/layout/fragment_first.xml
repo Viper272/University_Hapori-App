@@ -6,27 +6,41 @@
     android:layout_height="match_parent"
     tools:context=".FirstFragment">
 
+    <TextView
+        android:id="@+id/textView_home_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title"
+        android:textSize="40sp"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/constraint_home"
+        />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraint_home"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="200dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.294">
+        app:layout_constraintVertical_bias="0.5">
 
         <TextView
             android:id="@+id/textView_home_emergencyNow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/emergencyNow"
+            android:textSize="@dimen/default_textSize"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintVertical_bias="0"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -34,11 +48,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/emergencyHappened"
-            app:layout_constraintBottom_BottomOf="parent"
+            android:textSize="@dimen/default_textSize"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1" />
 
@@ -50,9 +64,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/noEmergency"
+        android:textSize="@dimen/default_textSize"
         app:layout_constraintTop_toBottomOf="@id/constraint_home"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/button_home_next"
         app:layout_constraintVertical_bias="1"
         />
@@ -62,10 +77,11 @@
         android:layout_width="142dp"
         android:layout_height="56dp"
         android:text="@string/next"
+        android:textSize="@dimen/default_textSize"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/constraint_home"
          />
 

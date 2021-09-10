@@ -58,11 +58,13 @@
 
             <ImageButton
                 android:id="@+id/button_111"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="58dp"
                 android:src="@drawable/button_111"
                 android:background="@null"
-                android:contentDescription="@string/call_111"/>
+                android:contentDescription="@string/call_111"
+                android:scaleType="fitCenter"
+                />
 
         </LinearLayout>
 
@@ -80,11 +82,12 @@
 
             <ImageButton
                 android:id="@+id/button_105"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="58dp"
                 android:src="@drawable/button_105"
                 android:background="@null"
-                android:contentDescription="@string/call_105"/>
+                android:contentDescription="@string/call_105"
+                android:scaleType="fitCenter"/>
 
         </LinearLayout>
 

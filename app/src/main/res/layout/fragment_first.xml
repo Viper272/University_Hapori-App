@@ -109,19 +109,6 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    <TextView
-        android:id="@+id/textView_home_noEmergency"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/noEmergency"
-        android:textSize="@dimen/default_textSize"
-        app:layout_constraintTop_toBottomOf="@id/constraint_home"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/button_home_next"
-        app:layout_constraintVertical_bias="1"
-        />
-
     <Button
         android:id="@+id/button_home_next"
         android:layout_width="142dp"

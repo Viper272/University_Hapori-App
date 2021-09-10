@@ -55,6 +55,13 @@
             app:layout_constraintHorizontal_chainStyle="packed"
             android:paddingHorizontal="5dp">
 
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/icon_phone"
+                android:layout_gravity="center_horizontal"
+                android:paddingBottom="10dp"
+                />
 
             <ImageButton
                 android:id="@+id/button_111"
@@ -79,6 +86,13 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0"
             android:paddingHorizontal="5dp">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/icon_notify"
+                android:layout_gravity="center_horizontal"
+                android:paddingBottom="10dp"/>
 
             <ImageButton
                 android:id="@+id/button_105"
@@ -112,7 +126,7 @@
     <Button
         android:id="@+id/button_home_next"
         android:layout_width="142dp"
-        android:layout_height="56dp"
+        android:layout_height="65dp"
         android:text="@string/next"
         android:textSize="@dimen/default_textSize"
         app:layout_constraintBottom_toBottomOf="parent"

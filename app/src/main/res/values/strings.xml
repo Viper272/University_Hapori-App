@@ -15,4 +15,30 @@
     <string name="emergencyHappened">If an emergency has already happened, call 105</string>
     <string name="next">No Emergency</string>
 
+    <!-- Fragment 2 -->
+    <string name="question_header">Please provide some information\nso that we can help you better</string>
+
+    <string-array name="array_forWho">
+        <item>Is this for you or someone else?</item>
+        <item>Me</item>
+        <item>Someone Else</item>
+    </string-array>
+
+    <string-array name="array_gender">
+        <item>Gender</item>
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="array_ethnicity">
+        <item>Ethnicity</item>
+        <item>New Zealander</item>
+        <item>Māori</item>
+        <item>Pacific</item>
+        <item>Other</item>
+    </string-array>
+
+
+
 </resources>

@@ -4,16 +4,61 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SecondFragment">
+    tools:context=".SecondFragment"
+    android:background="#005E7D">
+
+
 
     <TextView
         android:id="@+id/textview_second"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/button_second"
+        android:text="@string/question_header"
+        app:layout_constraintBottom_toTopOf="@id/constraint_spinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <Spinner
+            android:id="@+id/spinner_forWho"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            app:layout_constraintBottom_toTopOf="@id/spinner_gender"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Spinner
+            android:id="@+id/spinner_gender"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            app:layout_constraintBottom_toTopOf="@id/spinner_ethnicity"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/spinner_forWho" />
+
+        <Spinner
+            android:id="@+id/spinner_ethnicity"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toBottomOf="@id/spinner_gender" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <Button
         android:id="@+id/button_second"
@@ -23,6 +68,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textview_second" />
+        app:layout_constraintTop_toBottomOf="@id/constraint_spinner" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

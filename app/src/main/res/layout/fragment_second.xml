@@ -8,12 +8,12 @@
     android:background="#005E7D">
 
 
-
     <TextView
         android:id="@+id/textview_second"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/question_header"
+        android:textColor="#80D8FF"
         app:layout_constraintBottom_toTopOf="@id/constraint_spinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

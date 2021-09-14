@@ -22,9 +22,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraint_home"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="350dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -36,7 +35,7 @@
             android:layout_height="wrap_content"
             android:text="@string/emergencyNow"
             android:textSize="@dimen/default_textSize"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/linearLayout_emergencyNow"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintVertical_bias="0"
             app:layout_constraintStart_toStartOf="parent"
@@ -51,9 +50,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView_home_emergencyNow"
             app:layout_constraintBottom_toTopOf="@id/textView_home_emergencyHappened"
-            app:layout_constraintEnd_toStartOf="@id/linearLayout_emergencyHappened"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            android:paddingHorizontal="5dp">
+            app:layout_constraintEnd_toEndOf="parent">
 
             <ImageView
                 android:layout_width="60dp"
@@ -75,17 +72,29 @@
 
         </LinearLayout>
 
+
+
+        <TextView
+            android:id="@+id/textView_home_emergencyHappened"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/emergencyHappened"
+            android:textSize="@dimen/default_textSize"
+            app:layout_constraintBottom_toTopOf="@id/linearLayout_emergencyHappened"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/linearLayout_emergencyNow" />
+
         <LinearLayout
             android:id="@+id/linearLayout_emergencyHappened"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintStart_toEndOf="@id/linearLayout_emergencyNow"
-            app:layout_constraintTop_toBottomOf="@id/textView_home_emergencyNow"
-            app:layout_constraintBottom_toTopOf="@id/textView_home_emergencyHappened"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0"
-            android:paddingHorizontal="5dp">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView_home_emergencyHappened"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
 
             <ImageView
                 android:layout_width="60dp"
@@ -104,21 +113,6 @@
                 android:scaleType="fitCenter"/>
 
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/textView_home_emergencyHappened"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/emergencyHappened"
-            android:textSize="@dimen/default_textSize"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1" />
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

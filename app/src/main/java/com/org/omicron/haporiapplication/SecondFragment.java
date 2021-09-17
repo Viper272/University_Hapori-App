@@ -1,6 +1,8 @@
 package com.org.omicron.haporiapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,8 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.org.omicron.haporiapplication.databinding.FragmentSecondBinding;
 
 import java.util.ArrayList;
+
+import static com.org.omicron.haporiapplication.AnalyticsHandler.*;
 
 public class SecondFragment extends Fragment {
 
@@ -36,8 +40,18 @@ public class SecondFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.buttonSecond.setOnClickListener(view1 -> NavHostFragment.findNavController(SecondFragment.this)
-                .navigate(R.id.action_SecondFragment_to_FirstFragment));
+        //Already have navigation. This button should enter the app
+//        binding.submitAnswers.setOnClickListener(view1 -> NavHostFragment.findNavController(SecondFragment.this)
+//                .navigate(R.id.action_SecondFragment_to_FirstFragment));
+
+        binding.submitAnswers.setOnClickListener(view1 -> {
+            //Submit answers to local cache/analytics handler
+                submitAnswers();
+            //Enter app
+//                Intent viewServices = new Intent(getContext(), Thenextpage.class); //Add correct class here
+//            startActivity(viewServices);
+
+        });
 
         createSpinner(view, R.id.spinner_forWho, R.array.array_forWho);
         createSpinner(view, R.id.spinner_age, R.array.array_age);
@@ -65,6 +79,13 @@ public class SecondFragment extends Fragment {
         //Apply the adapter to the spinner
         spinner.setAdapter(adapter);
         spinnerList.add(spinner);
+    }
+
+    //Submit answers to cache/database
+    private void submitAnswers(){
+        IntroAnswerPacket packet = (IntroAnswerPacket)CreateAnalyticsPacket(Type.INTRO_ANSWER);
+        packet.setWho(spinnerList.get(0).getSelectedItem().toString());
+        Log.d("packet", packet.getWho());
     }
 
 }

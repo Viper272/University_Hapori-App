@@ -7,22 +7,95 @@
     tools:context=".FirstFragment">
 
     <TextView
-        android:id="@+id/textview_first"
+        android:id="@+id/textView_home_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_first_fragment"
-        app:layout_constraintBottom_toTopOf="@id/button_first"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/title"
+        android:textSize="40sp"
+        android:textAlignment="center"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/constraint_home"
+        />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint_home"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5">
+
+        <TextView
+            android:id="@+id/textView_home_emergencyNow"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="@string/emergencyNow"
+            android:textSize="@dimen/default_textSize"
+            app:layout_constraintBottom_toTopOf="@id/button_111"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textAlignment="center"/>
+
+        <ImageButton
+            android:id="@+id/button_111"
+            android:layout_width="130dp"
+            android:layout_height="75dp"
+            android:src="@drawable/button_111"
+            android:background="@null"
+            android:contentDescription="@string/call_111"
+            android:scaleType="fitCenter"
+            app:layout_constraintTop_toBottomOf="@id/textView_home_emergencyNow"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/textView_home_emergencyHappened"
+            />
+
+
+        <TextView
+            android:id="@+id/textView_home_emergencyHappened"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="@string/emergencyHappened"
+            android:textSize="@dimen/default_textSize"
+            app:layout_constraintBottom_toTopOf="@id/button_105"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/button_111"
+            android:textAlignment="center"/>
+
+        <ImageButton
+            android:id="@+id/button_105"
+            android:layout_width="130dp"
+            android:layout_height="75dp"
+            android:src="@drawable/button_105"
+            android:background="@null"
+            android:contentDescription="@string/call_105"
+            android:scaleType="fitCenter"
+            app:layout_constraintTop_toBottomOf="@id/textView_home_emergencyHappened"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <Button
-        android:id="@+id/button_first"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/button_home_next"
+        android:layout_width="142dp"
+        android:layout_height="65dp"
         android:text="@string/next"
+        android:backgroundTint="#365196"
+        android:textSize="@dimen/default_textSize"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textview_first" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/constraint_home"
+         />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

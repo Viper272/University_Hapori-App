@@ -48,9 +48,7 @@ public class SecondFragment extends Fragment {
             //Submit answers to local cache/analytics handler
                 submitAnswers();
             //Enter app
-//                Intent viewServices = new Intent(getContext(), Thenextpage.class); //Add correct class here
-//            startActivity(viewServices);
-
+            NavHostFragment.findNavController(SecondFragment.this).navigate(R.id.action_SecondFragment_to_serviceScrollFragment);
         });
 
         createSpinner(view, R.id.spinner_forWho, R.array.array_forWho);

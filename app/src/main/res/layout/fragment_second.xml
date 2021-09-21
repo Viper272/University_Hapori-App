@@ -9,74 +9,110 @@
 
 
     <TextView
-        android:id="@+id/textview_second"
+        android:id="@+id/textview_screen2_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/question_header"
-        android:textColor="#80D8FF"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@id/constraint_spinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:textSize="35sp"/>
+        android:textSize="35sp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraint_spinner"
         android:layout_width="match_parent"
         android:layout_height="400dp"
-        app:layout_constraintTop_toBottomOf="@id/textview_second"
+        app:layout_constraintTop_toBottomOf="@id/textview_screen2_header"
         app:layout_constraintBottom_toTopOf="@id/submit_answers">
 
-        <Spinner
-            android:id="@+id/spinner_forWho"
+        <RelativeLayout
+            android:id="@+id/relativeLayout_forWho"
             android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:minHeight="48dp"
-            app:layout_constraintBottom_toTopOf="@id/spinner_gender"
+            android:layout_height="48dp"
+            app:layout_constraintBottom_toTopOf="@id/relativeLayout_age"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.1"/>
+            app:layout_constraintVertical_bias="0.1"
+            android:background="@color/white">
+            <Spinner
+                android:id="@+id/spinner_forWho"
+                style="@style/Widget.AppCompat.DropDownItem.Spinner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+        </RelativeLayout>
 
-        <Spinner
-            android:id="@+id/spinner_age"
+        <RelativeLayout
+            android:id="@+id/relativeLayout_age"
             android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:minHeight="48dp"
-            app:layout_constraintTop_toBottomOf="@id/spinner_forWho"
-            app:layout_constraintBottom_toTopOf="@id/spinner_gender"
+            android:layout_height="48dp"
+            app:layout_constraintTop_toBottomOf="@id/relativeLayout_forWho"
+            app:layout_constraintBottom_toTopOf="@id/relativeLayout_gender"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@color/white">
+            <Spinner
+                android:id="@+id/spinner_age"
+                style="@style/Widget.AppCompat.DropDownItem.Spinner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+        </RelativeLayout>
 
-        <Spinner
-            android:id="@+id/spinner_gender"
+        <RelativeLayout
+            android:id="@+id/relativeLayout_gender"
             android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:minHeight="48dp"
-            app:layout_constraintTop_toBottomOf="@id/spinner_age"
-            app:layout_constraintBottom_toTopOf="@id/spinner_ethnicity"
+            android:layout_height="48dp"
+            app:layout_constraintTop_toBottomOf="@id/relativeLayout_age"
+            app:layout_constraintBottom_toTopOf="@id/relativeLayout_ethnicity"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@color/white">
+            <Spinner
+                android:id="@+id/spinner_gender"
+                style="@style/Widget.AppCompat.DropDownItem.Spinner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+        </RelativeLayout>
 
-        <Spinner
-            android:id="@+id/spinner_ethnicity"
+        <RelativeLayout
+            android:id="@+id/relativeLayout_ethnicity"
             android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:minHeight="48dp"
-            app:layout_constraintTop_toBottomOf="@id/spinner_gender"
-            app:layout_constraintBottom_toTopOf="@id/spinner_category"
+            android:layout_height="48dp"
+            app:layout_constraintTop_toBottomOf="@id/relativeLayout_gender"
+            app:layout_constraintBottom_toTopOf="@id/relativeLayout_category"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@color/white">
+            <Spinner
+                android:id="@+id/spinner_ethnicity"
+                style="@style/Widget.AppCompat.DropDownItem.Spinner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+        </RelativeLayout>
 
-        <Spinner
-            android:id="@+id/spinner_category"
+        <RelativeLayout
+            android:id="@+id/relativeLayout_category"
             android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:minHeight="48dp"
-            app:layout_constraintTop_toBottomOf="@id/spinner_ethnicity"
+            android:layout_height="48dp"
+            app:layout_constraintTop_toBottomOf="@id/relativeLayout_ethnicity"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@color/white">
+            <Spinner
+                android:id="@+id/spinner_category"
+                style="@style/Widget.AppCompat.DropDownItem.Spinner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+        </RelativeLayout>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

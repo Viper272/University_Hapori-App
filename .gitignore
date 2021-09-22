@@ -14,7 +14,7 @@
 .cxx
 local.properties
 
-//Ignoring NODE files
+#Ignoring NODE files
 # Logs
 logs
 *.log

@@ -1,20 +1,20 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 var ContactDetails = new Schema({
     phone: {type:String, required:true},
     email: {type:String, required:true}
 });
 
-var ServiceModel = new Schema({
+var ServiceSchema = new Schema({
     name: {
         type:String,
-        require:true,
+        required:true,
         unique:true
     },
     shortDescription: {
         type:String,
-        
+        required:true  
     },
     longDescription: {
         type:String,
@@ -22,6 +22,4 @@ var ServiceModel = new Schema({
     contact: [ContactDetails]
 });
 
-
-var Service = mongoose.model("services", ServiceModel);
-module.exports = Service;
+module.exports = mongoose.model("Services", ServiceSchema);

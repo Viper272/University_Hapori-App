@@ -26,6 +26,7 @@ public class ServiceScrollAdapter extends RecyclerView.Adapter<ServiceScrollAdap
 //    }
 
 
+
     public ServiceScrollAdapter(List<ServicesListItem> items) {
         this.items = items;
     }

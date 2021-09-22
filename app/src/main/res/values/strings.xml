@@ -63,6 +63,9 @@
     <string name="DEFAULT_ServiceName">[DEFAULT: The Service Name]</string>
     <string name="DEFAULT_ServiceShortDesc">[DEFAULT: A Short Description About The Service]</string>
 
+    <!--Category Screen -->
+    <string name="DEFAULT_CategoryName">[DEFAULT: The Service Name]</string>
+
 
 
     <string name="large_text">

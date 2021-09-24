@@ -16,5 +16,4 @@ public class CategoryListItem {
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
     }
-
 }

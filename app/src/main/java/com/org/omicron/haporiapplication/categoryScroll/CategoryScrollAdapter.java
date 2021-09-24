@@ -9,8 +9,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.org.omicron.haporiapplication.R;
-import com.org.omicron.haporiapplication.categoryScroll.CategoryScrollAdapter;
-import com.org.omicron.haporiapplication.categoryScroll.CategoryListItem;
 
 import java.util.List;
 
@@ -41,7 +39,6 @@ public class CategoryScrollAdapter extends RecyclerView.Adapter<CategoryScrollAd
     @Override
     public void onBindViewHolder(@NonNull CategoryScrollAdapter.CategoryHolder holder, int position) {
         CategoryListItem item = items.get(position);
-
         holder.setCategoryName(item.getCategoryName());
     }
 
@@ -50,7 +47,7 @@ public class CategoryScrollAdapter extends RecyclerView.Adapter<CategoryScrollAd
         return items == null ? 0 : items.size();
     }
 
-    
+
 
 
     public static final class CategoryHolder extends RecyclerView.ViewHolder {
@@ -65,6 +62,6 @@ public class CategoryScrollAdapter extends RecyclerView.Adapter<CategoryScrollAd
         public void setCategoryName(String name) {
             textView_Name.setText(name);
         }
-
     }
+
 }

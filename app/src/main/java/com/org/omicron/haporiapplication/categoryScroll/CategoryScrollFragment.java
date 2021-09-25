@@ -8,12 +8,16 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.org.omicron.haporiapplication.R;
+import com.org.omicron.haporiapplication.SecondFragment;
 import com.org.omicron.haporiapplication.databinding.FragmentCategoryScrollBinding;
+import androidx.navigation.fragment.NavHostFragment;
 
 import java.util.ArrayList;
 
@@ -44,5 +48,21 @@ public class CategoryScrollFragment extends Fragment {
         }
 
         adapter.notifyDataSetChanged();
+
+        recyclerView.addOnItemTouchListener(
+                new RecyclerItemClickListener(getContext(), recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override public void onItemClick(View view, int position) {
+                        Log.d("onItemClick", String.valueOf(position));
+                        NavHostFragment.findNavController(CategoryScrollFragment.this).navigate(R.id.action_categoryScrollFragment_to_serviceScrollFragment);
+                    }
+
+                    @Override public void onLongItemClick(View view, int position) {
+
+                    }
+                })
+        );
     }
+
 }
+
+

@@ -98,4 +98,22 @@
         app:layout_constraintTop_toBottomOf="@id/constraint_home"
          />
 
+    <Button
+        android:id="@+id/tempButton_gotoServiceScroll"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Service Scroll"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tempButton_gotoServiceFragment"
+        android:layout_marginHorizontal="10dp"/>
+
+    <Button
+        android:id="@+id/tempButton_gotoServiceFragment"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Service Page"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tempButton_gotoServiceFragment"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

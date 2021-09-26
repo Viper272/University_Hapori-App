@@ -1,11 +1,14 @@
 package com.org.omicron.haporiapplication.categoryScroll;
 
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.org.omicron.haporiapplication.R;
@@ -14,6 +17,7 @@ import java.util.List;
 
 public class CategoryScrollAdapter extends RecyclerView.Adapter<CategoryScrollAdapter.CategoryHolder>{
     private final List<CategoryListItem> items;
+    private Fragment fragment;
 
 //    public static CategoryScrollAdapter newInstance(Context context) {
 //        List<CategoryListItem> items = new ArrayList<>();
@@ -25,14 +29,22 @@ public class CategoryScrollAdapter extends RecyclerView.Adapter<CategoryScrollAd
 //    }
 
 
-    public CategoryScrollAdapter(List<CategoryListItem> items) {
+    public CategoryScrollAdapter(List<CategoryListItem> items, Fragment fragment) {
         this.items = items;
+        this.fragment = fragment;
     }
 
     @NonNull
     @Override
     public CategoryScrollAdapter.CategoryHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.listitem_category_scroll, parent, false);
+//        view.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View view, MotionEvent motionEvent) {
+//                NavHostFragment.findNavController(fragment).navigate(R.id.action_categoryScrollFragment_to_serviceScrollFragment);
+//                return false;
+//            }
+//        });
         return new CategoryScrollAdapter.CategoryHolder(view);
     }
 

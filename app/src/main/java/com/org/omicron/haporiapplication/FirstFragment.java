@@ -45,6 +45,14 @@ public class FirstFragment extends Fragment {
             startActivity(phone);
         });
 
+        binding.tempButtonGotoServiceFragment.setOnClickListener(v -> {
+            NavHostFragment.findNavController(FirstFragment.this).navigate(R.id.action_FirstFragment_to_serviceFragment);
+        });
+
+        binding.tempButtonGotoServiceScroll.setOnClickListener(v -> {
+            NavHostFragment.findNavController(FirstFragment.this).navigate(R.id.action_FirstFragment_to_serviceScrollFragment);
+        });
+
     }
 
     @Override

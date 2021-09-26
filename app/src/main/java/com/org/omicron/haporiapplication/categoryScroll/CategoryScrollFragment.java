@@ -40,12 +40,14 @@ public class CategoryScrollFragment extends Fragment {
         recyclerView = (RecyclerView) this.getActivity().findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext(), LinearLayoutManager.VERTICAL, false));
 
-        adapter = new CategoryScrollAdapter(categoryList);
+        adapter = new CategoryScrollAdapter(categoryList, this);
         recyclerView.setAdapter(adapter);
 
         for (int i = 0; i < 8; i++) {
             categoryList.add(new CategoryListItem(String.format("Category %1$d", i)));
         }
+
+
 
         adapter.notifyDataSetChanged();
 

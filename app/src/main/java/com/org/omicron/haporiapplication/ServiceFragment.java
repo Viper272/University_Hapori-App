@@ -27,11 +27,6 @@ public class ServiceFragment extends Fragment{
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-//        binding.buttonHomeNext.setOnClickListener(view1 -> NavHostFragment.findNavController(FirstFragment.this)
-//                .navigate(R.id.action_FirstFragment_to_SecondFragment));
-
-
     }
 
     @Override

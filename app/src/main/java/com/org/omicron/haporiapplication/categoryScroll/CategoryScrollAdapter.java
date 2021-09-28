@@ -38,13 +38,6 @@ public class CategoryScrollAdapter extends RecyclerView.Adapter<CategoryScrollAd
     @Override
     public CategoryScrollAdapter.CategoryHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.listitem_category_scroll, parent, false);
-//        view.setOnTouchListener(new View.OnTouchListener() {
-//            @Override
-//            public boolean onTouch(View view, MotionEvent motionEvent) {
-//                NavHostFragment.findNavController(fragment).navigate(R.id.action_categoryScrollFragment_to_serviceScrollFragment);
-//                return false;
-//            }
-//        });
         return new CategoryScrollAdapter.CategoryHolder(view);
     }
 

@@ -14,12 +14,6 @@
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
             app:destination="@id/SecondFragment" />
-        <action
-            android:id="@+id/action_FirstFragment_to_serviceFragment"
-            app:destination="@id/serviceFragment" />
-        <action
-            android:id="@+id/action_FirstFragment_to_serviceScrollFragment"
-            app:destination="@id/serviceScrollFragment" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
@@ -63,7 +57,7 @@
         android:name="com.org.omicron.haporiapplication.ServiceFragment"
         android:label="ServiceFragment" >
         <action
-            android:id="@+id/action_serviceFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_serviceFragment_to_serviceScrollFragment"
+            app:destination="@id/serviceScrollFragment" />
     </fragment>
 </navigation>

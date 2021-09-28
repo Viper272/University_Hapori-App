@@ -37,7 +37,7 @@ public class CategoryScrollFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        recyclerView = (RecyclerView) this.getActivity().findViewById(R.id.recyclerView);
+        recyclerView = (RecyclerView) this.getActivity().findViewById(R.id.categoryRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext(), LinearLayoutManager.VERTICAL, false));
 
         adapter = new CategoryScrollAdapter(categoryList, this);

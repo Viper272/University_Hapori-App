@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,6 +15,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.org.omicron.haporiapplication.R;
+import com.org.omicron.haporiapplication.categoryScroll.CategoryScrollFragment;
+import com.org.omicron.haporiapplication.categoryScroll.RecyclerItemClickListener;
 import com.org.omicron.haporiapplication.databinding.FragmentServiceScrollBinding;
 
 import java.util.ArrayList;
@@ -47,8 +50,20 @@ public class ServiceScrollFragment extends Fragment {
         adapter.notifyDataSetChanged();
 
 
+        recyclerView.addOnItemTouchListener(
+                new RecyclerItemClickListener(getContext(), recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override public void onItemClick(View view, int position) {
+                        Log.d("onItemClick", String.valueOf(position));
+                        NavHostFragment.findNavController(ServiceScrollFragment.this).navigate(R.id.action_serviceScrollFragment_to_serviceFragment);
+                    }
 
-        Log.d("after", "after");
+                    @Override public void onLongItemClick(View view, int position) {
+
+                    }
+                })
+        );
+
+
 
     }
 }

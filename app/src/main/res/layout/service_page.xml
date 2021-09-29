@@ -11,8 +11,7 @@
         app:layout_constraintBottom_toTopOf="@id/constraint_location"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0">
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/service_logo"
@@ -23,7 +22,6 @@
             app:layout_constraintHeight_max="150dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.1"
             app:layout_constraintWidth_max="150dp"
             app:layout_constraintEnd_toStartOf="@id/service_name"/>
         <!--        tools:srcCompat="@tools:sample/avatars"-->
@@ -47,10 +45,8 @@
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/service_logo"
-            app:layout_constraintVertical_bias="0.84" />
+            app:layout_constraintTop_toBottomOf="@id/service_logo"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -71,10 +67,8 @@
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@id/location_image"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.1"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1" />
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <ImageView
             android:id="@+id/location_image"
@@ -84,10 +78,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/service_address"
             app:layout_constraintHeight_max="150dp"
-            app:layout_constraintHorizontal_bias="0.1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.6"
             app:layout_constraintWidth_max="150dp" />
         <!--        tools:srcCompat="@tools:sample/avatars"-->
         <TextView
@@ -97,10 +89,8 @@
             android:text="95 Great South Road, Epsom, Auckland 1051"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.6"
             app:layout_constraintStart_toEndOf="@id/location_image"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.5"
             app:layout_constraintWidth_max="150dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -1,6 +1,7 @@
 package com.org.omicron.haporiapplication;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +28,16 @@ public class ServiceFragment extends Fragment{
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        binding.buttonDial.setOnClickListener(v -> {
+            Intent phone = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + "1234567890"));
+            startActivity(phone);
+        });
+
+//        binding.buttonEmail.setOnClickListener(v1 ->{
+//            Intent email = new Intent(Intent.CATEGORY_APP_EMAIL, );
+//            startActivity(email);
+//        });
     }
 
     @Override

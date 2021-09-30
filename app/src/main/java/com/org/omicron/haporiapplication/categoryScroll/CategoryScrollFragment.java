@@ -1,5 +1,6 @@
 package com.org.omicron.haporiapplication.categoryScroll;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -19,6 +20,12 @@ import com.org.omicron.haporiapplication.SecondFragment;
 import com.org.omicron.haporiapplication.databinding.FragmentCategoryScrollBinding;
 import androidx.navigation.fragment.NavHostFragment;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 
 
@@ -44,9 +51,34 @@ public class CategoryScrollFragment extends Fragment {
         recyclerView.setAdapter(adapter);
 
         if(categoryList.isEmpty()){
-            for (int i = 0; i < 8; i++) {
-                categoryList.add(new CategoryListItem(String.format("Category %1$d", i)));
+
+            //Retrieve categories from database
+            JSONArray JSON_Categories = new JSONArray();
+
+            //Before database is setup
+            if(JSON_Categories.length() == 0){
+                for (int i = 0; i < 8; i++) {
+                    categoryList.add(new CategoryListItem(String.format("Category %1$d", i)));
+                }
             }
+
+            //Iterate and create category views
+            for(int i = 0; i < JSON_Categories.length(); i++){
+                try {
+                    JSONObject category = JSON_Categories.getJSONObject(i);
+
+                    String title = (String)category.get("title");
+                    String URL = (String)category.get("logo");
+
+                    Drawable logo = GetImageFromUrl(URL);
+                    categoryList.add(new CategoryListItem(String.format("Category %1$d", title), logo));
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+
             adapter.notifyDataSetChanged();
         }
 
@@ -64,6 +96,14 @@ public class CategoryScrollFragment extends Fragment {
         );
     }
 
+    public static Drawable GetImageFromUrl(String url) {
+        try {
+            InputStream is = (InputStream) new URL(url).getContent();
+            Drawable d = Drawable.createFromStream(is, null);
+            return d;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
 }
-
-

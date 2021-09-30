@@ -1,9 +1,11 @@
 package com.org.omicron.haporiapplication.categoryScroll;
 
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -45,6 +47,7 @@ public class CategoryScrollAdapter extends RecyclerView.Adapter<CategoryScrollAd
     public void onBindViewHolder(@NonNull CategoryScrollAdapter.CategoryHolder holder, int position) {
         CategoryListItem item = items.get(position);
         holder.setCategoryName(item.getCategoryName());
+        holder.setCategoryLogo(item.getCategoryImage());
     }
 
     @Override
@@ -52,20 +55,24 @@ public class CategoryScrollAdapter extends RecyclerView.Adapter<CategoryScrollAd
         return items == null ? 0 : items.size();
     }
 
-
-
-
     public static final class CategoryHolder extends RecyclerView.ViewHolder {
         private TextView textView_Name;
+        private ImageView imageView_Logo;
 
         private CategoryHolder(View itemView) {
             super(itemView);
 
             textView_Name = itemView.findViewById(R.id.textView_CategoryName);
+            imageView_Logo = itemView.findViewById(R.id.imageView_CategoryIcon);
         }
 
         public void setCategoryName(String name) {
             textView_Name.setText(name);
+        }
+        public void setCategoryLogo(Drawable logo){
+            if(logo != null){
+                imageView_Logo.setImageDrawable(logo);
+            }
         }
     }
 

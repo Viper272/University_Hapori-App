@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".categoryScroll.CategoryScrollFragment">
+    tools:context=".categoryScroll.CategoryScrollFragment"
+    android:background="@color/appBackground">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/categoryRecyclerView"

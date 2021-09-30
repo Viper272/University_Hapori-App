@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/appBackground">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraint_service"
@@ -15,38 +16,26 @@
 
         <ImageView
             android:id="@+id/service_logo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/logo_lifeline"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/logo_lifeline_circle"
             app:layout_constraintBottom_toTopOf="@+id/service_description"
-            app:layout_constraintHeight_max="150dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintWidth_max="150dp"
-            app:layout_constraintEnd_toStartOf="@id/service_name"/>
+            app:layout_constraintTop_toTopOf="parent"/>
         <!--        tools:srcCompat="@tools:sample/avatars"-->
 
         <TextView
-            android:id="@+id/service_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Lifeline Aotearoa"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/service_description"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/service_logo"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
             android:id="@+id/service_description"
-            android:layout_width="350dp"
+            android:layout_width="300dp"
             android:layout_height="100dp"
             android:text="Service Provider Description"
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/service_logo"/>
+            app:layout_constraintTop_toBottomOf="@id/service_logo"
+            android:background="@color/white"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

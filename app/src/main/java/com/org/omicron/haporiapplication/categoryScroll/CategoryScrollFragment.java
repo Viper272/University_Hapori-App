@@ -15,6 +15,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.org.omicron.haporiapplication.MainActivity;
 import com.org.omicron.haporiapplication.R;
 import com.org.omicron.haporiapplication.SecondFragment;
 import com.org.omicron.haporiapplication.databinding.FragmentCategoryScrollBinding;
@@ -54,6 +55,9 @@ public class CategoryScrollFragment extends Fragment {
 
             //Retrieve categories from database
             //Access MainActivity task to run network process
+            String JSON = ((MainActivity)getActivity()).getCategories();
+            Log.i("CategoryJSON", JSON);
+            //Need to use JSON here
             JSONArray JSON_Categories = new JSONArray();
 
             //Before database is setup

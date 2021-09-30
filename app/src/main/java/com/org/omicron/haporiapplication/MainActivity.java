@@ -3,11 +3,7 @@ package com.org.omicron.haporiapplication;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
-import com.google.android.material.snackbar.Snackbar;
-
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.view.View;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -23,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
-    private GetCategoriesTask getCategories;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,17 +71,19 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
-    private class GetCategoriesTask extends AsyncTask<Void, Void, Void> {
+    public String getCategories(){
+        String URL = "Insert URL here";
+        String response = new GetCategoriesTask().doInBackground(URL);
+        return response;
+    }
+
+    private class GetCategoriesTask extends AsyncTask<String, Integer, String> {
+
         @Override
-        protected Void doInBackground(Void... voids) {
-
-            return null;
+        protected String doInBackground(String... strings) {
+            String response = "Pretend this is from the database";
+            return response;
         }
-
-
-        // All your networking logic
-        // should be here
-
 
     }
 

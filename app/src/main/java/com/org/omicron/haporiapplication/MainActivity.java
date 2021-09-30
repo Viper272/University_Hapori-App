@@ -1,5 +1,6 @@
 package com.org.omicron.haporiapplication;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
+    private GetCategoriesTask getCategories;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,4 +75,19 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, appBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
+    private class GetCategoriesTask extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected Void doInBackground(Void... voids) {
+
+            return null;
+        }
+
+
+        // All your networking logic
+        // should be here
+
+
+    }
+
 }

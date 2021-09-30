@@ -53,6 +53,7 @@ public class CategoryScrollFragment extends Fragment {
         if(categoryList.isEmpty()){
 
             //Retrieve categories from database
+            //Access MainActivity task to run network process
             JSONArray JSON_Categories = new JSONArray();
 
             //Before database is setup

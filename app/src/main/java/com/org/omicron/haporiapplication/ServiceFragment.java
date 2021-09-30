@@ -15,6 +15,8 @@ import androidx.appcompat.app.ActionBar;
 
 import com.org.omicron.haporiapplication.databinding.ServicePageBinding;
 
+import java.net.URI;
+
 public class ServiceFragment extends Fragment{
     private ServicePageBinding binding;
 
@@ -39,10 +41,15 @@ public class ServiceFragment extends Fragment{
         ActionBar actionBar = ((AppCompatActivity)getActivity()).getSupportActionBar();
         actionBar.setTitle("Lifeline Aotearoa");
 
-//        binding.buttonEmail.setOnClickListener(v1 ->{
-//            Intent email = new Intent(Intent.CATEGORY_APP_EMAIL, );
-//            startActivity(email);
-//        });
+        binding.buttonEmail.setOnClickListener(v1 ->{
+            Intent email = new Intent(Intent.ACTION_SENDTO);
+            String uriText = "mailto:test@gmail.com";
+            Uri uri = Uri.parse(uriText);
+            email.setData(uri);
+            startActivity(Intent.createChooser(email, "Send email"));
+        });
+
+
     }
 
     @Override

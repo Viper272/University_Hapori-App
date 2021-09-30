@@ -43,13 +43,12 @@ public class CategoryScrollFragment extends Fragment {
         adapter = new CategoryScrollAdapter(categoryList, this);
         recyclerView.setAdapter(adapter);
 
-        for (int i = 0; i < 8; i++) {
-            categoryList.add(new CategoryListItem(String.format("Category %1$d", i)));
+        if(categoryList.isEmpty()){
+            for (int i = 0; i < 8; i++) {
+                categoryList.add(new CategoryListItem(String.format("Category %1$d", i)));
+            }
+            adapter.notifyDataSetChanged();
         }
-
-
-
-        adapter.notifyDataSetChanged();
 
         recyclerView.addOnItemTouchListener(
                 new RecyclerItemClickListener(getContext(), recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {

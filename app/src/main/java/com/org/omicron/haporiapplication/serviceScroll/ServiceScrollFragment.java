@@ -16,6 +16,7 @@ import com.org.omicron.haporiapplication.R;
 import com.org.omicron.haporiapplication.databinding.FragmentServiceScrollBinding;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class ServiceScrollFragment extends Fragment {
 
@@ -39,8 +40,10 @@ public class ServiceScrollFragment extends Fragment {
         adapter = new ServiceScrollAdapter(serviceList);
         recyclerView.setAdapter(adapter);
 
+        Random r = new Random();
+
         for (int i = 0; i < 100; i++) {
-            serviceList.add(new ServicesListItem(String.format("Service %1$d", i), String.format("Default Short Description for service %1$d", i)));
+            serviceList.add(new ServicesListItem(String.valueOf(r.nextInt(10000)), String.format("Service %1$d", i), String.format("Default Short Description for service %1$d", i)));
         }
 
         adapter.notifyDataSetChanged();

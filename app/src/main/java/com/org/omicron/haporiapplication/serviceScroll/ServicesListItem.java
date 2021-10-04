@@ -1,12 +1,13 @@
 package com.org.omicron.haporiapplication.serviceScroll;
 
 public class ServicesListItem {
-
+    private String serviceID;
     private String serviceName;
     private String shortDesc;
     private String fullDesc;
 
-    public ServicesListItem(String serviceName, String shortDesc) {
+    public ServicesListItem(String serviceID, String serviceName, String shortDesc) {
+        this.serviceID = serviceID;
         this.serviceName = serviceName;
         this.shortDesc = shortDesc;
     }

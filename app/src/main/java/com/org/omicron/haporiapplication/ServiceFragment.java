@@ -3,10 +3,15 @@ package com.org.omicron.haporiapplication;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.PopupMenu;
+import android.widget.Toast;
 
+import androidx.annotation.MenuRes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -16,6 +21,8 @@ import androidx.appcompat.app.ActionBar;
 import com.org.omicron.haporiapplication.databinding.ServicePageBinding;
 
 import java.net.URI;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ServiceFragment extends Fragment{
     private ServicePageBinding binding;
@@ -34,8 +41,18 @@ public class ServiceFragment extends Fragment{
         super.onViewCreated(view, savedInstanceState);
 
         binding.buttonDial.setOnClickListener(v -> {
-            Intent phone = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + "1234567890"));
-            startActivity(phone);
+            Map<String, String> phoneMap = new HashMap();
+            phoneMap.put("Test1", "1234567890");
+            phoneMap.put("Test2", "0987654321");
+            phoneMap.put("Test3", "1029384756");
+
+            PopupMenu popup = new PopupMenu(getContext(), v);
+            for(String key : phoneMap.keySet()) {
+                Intent phone = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + phoneMap.get(key)));
+                popup.getMenu().add(key).setIntent(phone);
+            }
+            popup.show();
+
         });
 
         ActionBar actionBar = ((AppCompatActivity)getActivity()).getSupportActionBar();
@@ -56,5 +73,9 @@ public class ServiceFragment extends Fragment{
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    private void showMenu(View v, int menuRes) {
+
     }
 }

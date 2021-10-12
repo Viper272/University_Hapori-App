@@ -19,7 +19,8 @@ var ServiceSchema = new Schema({
     longDescription: {
         type:String,
     },
-    contact: [ContactDetails]
+    contact: [ContactDetails],
+    tags: [String]
 });
 
 module.exports = mongoose.model("Services", ServiceSchema);

@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const service = require('../models/services');
+const category = require('../models/categories');
 
-//Get all services
+//Get all Categories
 router.route('/')
 .get(function(req, res) {
-    service.find({}, function(err, response) {
+    category.find({}, function(err, response) {
         if(err) {
             return fail(res, err);
         } else {
@@ -13,14 +13,14 @@ router.route('/')
         }
     });
 })
-//Create a service
-.post(function(req, res, next) {
-    service.create(req.body, function(err, response) {
+//Create a Category
+.post(function(req, res) {
+    category.create(req.body, function(err, response) {
         if(err) {
             if(err.name === 'MongoError' && err.code === 11000) {
-                return fails(res, 'Service already exists in database');
+                return fail(res, 'Category already exists in database');
             }
-            return fails(res, err);
+            return fail(res, err);
         } else {
             success(res, response);
         }
@@ -28,18 +28,9 @@ router.route('/')
     });
 });
 
-router.route('/:serviceID')
-.get(function(req, res) {
-    service.findById(req.params.serviceID, function(err, response) {
-        if(err) {
-            fail (res, err);
-        } else {
-            success(res, response);
-        }
-    });
-})
+router.route('/:categoryID')
 .delete(function(req, res) {
-    service.deleteOne(req.params.serviceID, function(err, response) {
+    category.deleteOne(req.params.categoryID, function(err, response) {
         if(err) {
             fail(res, err);
         } else {
@@ -58,7 +49,7 @@ function success(res, data) {
             data: data
         });
     }
-} 
+}
 
 function fail(res, err) {
     return res.status(500).send({success:false, message:err});

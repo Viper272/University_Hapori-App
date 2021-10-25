@@ -6,7 +6,9 @@ require('dotenv/config')
 app.use(express.json());
 
 const servicesRouter = require('./routes/services');
+const categoryRouter = require('./routes/categories');
 app.use('/services', servicesRouter);
+app.use('/categories', categoryRouter);
 
 mongoose.connect(
     process.env.DB_CONNECTION,

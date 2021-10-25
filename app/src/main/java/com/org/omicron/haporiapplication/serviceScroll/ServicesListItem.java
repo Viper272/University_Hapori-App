@@ -1,35 +1,40 @@
 package com.org.omicron.haporiapplication.serviceScroll;
 
+import com.google.gson.annotations.SerializedName;
+
 public class ServicesListItem {
 
-    private String serviceName;
-    private String shortDesc;
-    private String fullDesc;
+    @SerializedName("name")
+    private String name;
+
+    @SerializedName("shortDescription")
+    private String shortDescription;
+    private String fullDescription;
 
     public ServicesListItem(String serviceName, String shortDesc) {
-        this.serviceName = serviceName;
-        this.shortDesc = shortDesc;
+        this.name = serviceName;
+        this.shortDescription = shortDesc;
     }
 
     //Getters
     public String getServiceName() {
-        return serviceName;
+        return name;
     }
     public String getShortDesc() {
-        return shortDesc;
+        return shortDescription;
     }
     public String getFullDesc() {
-        return fullDesc;
+        return fullDescription;
     }
 
     //Setters
     public void setServiceName(String serviceName) {
-        this.serviceName = serviceName;
+        this.name = serviceName;
     }
     public void setShortDesc(String shortDesc) {
-        this.shortDesc = shortDesc;
+        this.shortDescription = shortDesc;
     }
     public void setFullDesc(String fullDesc) {
-        this.fullDesc = fullDesc;
+        this.fullDescription = fullDesc;
     }
 }

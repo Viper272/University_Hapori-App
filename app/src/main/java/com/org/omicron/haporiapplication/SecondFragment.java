@@ -56,9 +56,6 @@ public class SecondFragment extends Fragment {
         createSpinner(view, R.id.spinner_gender, R.array.array_gender);
         createSpinner(view, R.id.spinner_ethnicity, R.array.array_ethnicity);
         createSpinner(view, R.id.spinner_category, R.array.array_category);
-
-
-
     }
 
     @Override

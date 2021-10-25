@@ -10,10 +10,18 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
 import com.org.omicron.haporiapplication.R;
+import com.org.omicron.haporiapplication.categoryScroll.CategoryScrollFragment;
+import com.org.omicron.haporiapplication.categoryScroll.RecyclerItemClickListener;
 import com.org.omicron.haporiapplication.databinding.FragmentServiceScrollBinding;
 import com.org.omicron.haporiapplication.restAPI.RetrofitClient;
 import com.org.omicron.haporiapplication.restAPI.models.DBResponse;

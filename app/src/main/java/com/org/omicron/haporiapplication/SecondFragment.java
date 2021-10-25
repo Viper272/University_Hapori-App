@@ -48,7 +48,7 @@ public class SecondFragment extends Fragment {
             //Submit answers to local cache/analytics handler
                 submitAnswers();
             //Enter app
-            NavHostFragment.findNavController(SecondFragment.this).navigate(R.id.action_SecondFragment_to_serviceScrollFragment);
+            NavHostFragment.findNavController(SecondFragment.this).navigate(R.id.action_SecondFragment_to_categoryScrollFragment);
         });
 
         createSpinner(view, R.id.spinner_forWho, R.array.array_forWho);

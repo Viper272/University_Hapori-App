@@ -9,7 +9,7 @@ public class RetrofitClient {
     private API api;
 
     private RetrofitClient() {
-        Retrofit retro = new Retrofit.Builder().baseUrl(API.BASE_URL)
+        Retrofit retro = new Retrofit.Builder().baseUrl(API.INTERNAL_TEST_URL)
                 .addConverterFactory(GsonConverterFactory.create()).build();
 
         api = retro.create(API.class);

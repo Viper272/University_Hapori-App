@@ -1,7 +1,6 @@
 package com.org.omicron.haporiapplication.restAPI.models;
 
 import com.google.gson.annotations.SerializedName;
-import com.org.omicron.haporiapplication.serviceScroll.ServicesListItem;
 
 import java.util.List;
 
@@ -12,9 +11,9 @@ public class DBResponse {
     @SerializedName("message")
     private String message;
     @SerializedName("data")
-    private List<ServicesListItem> data;
+    private List<DBServices> data;
 
-    public DBResponse(boolean success, String message, List<ServicesListItem> data)
+    public DBResponse(boolean success, String message, List<DBServices> data)
     {
         this.success = success;
         this.message = message;
@@ -27,7 +26,7 @@ public class DBResponse {
     public String getMessage() {
         return message;
     }
-    public List<ServicesListItem> getData() {
+    public List<DBServices> getData() {
         return data;
     }
 }

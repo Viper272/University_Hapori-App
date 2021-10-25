@@ -9,12 +9,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.org.omicron.haporiapplication.R;
+import com.org.omicron.haporiapplication.restAPI.models.DBServices;
 
 import java.util.List;
 
 public class ServiceScrollAdapter extends RecyclerView.Adapter<ServiceScrollAdapter.ServiceHolder>{
 
-    private final List<ServicesListItem> items;
+    private final List<DBServices> items;
 
 //    public static ServiceScrollAdapter newInstance(Context context) {
 //        List<ServicesListItem> items = new ArrayList<>();
@@ -27,7 +28,7 @@ public class ServiceScrollAdapter extends RecyclerView.Adapter<ServiceScrollAdap
 
 
 
-    public ServiceScrollAdapter(List<ServicesListItem> items) {
+    public ServiceScrollAdapter(List<DBServices> items) {
         this.items = items;
     }
 
@@ -40,7 +41,7 @@ public class ServiceScrollAdapter extends RecyclerView.Adapter<ServiceScrollAdap
 
     @Override
     public void onBindViewHolder(@NonNull ServiceHolder holder, int position) {
-        ServicesListItem item = items.get(position);
+        DBServices item = items.get(position);
 
         holder.setServiceName(item.getServiceName());
         holder.setServiceShortDesc(item.getShortDesc());

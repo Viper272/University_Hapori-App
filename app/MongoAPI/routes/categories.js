@@ -1,38 +1,50 @@
 const express = require('express');
 const router = express.Router();
-const category = require('../models/categories');
+const category = require('../models/categories.js');
 
-//Get all Categories
+router.use(express.json());
+
+//Get all services
 router.route('/')
 .get(function(req, res) {
     category.find({}, function(err, response) {
-        if(err) {
+	if(err) {
             return fail(res, err);
         } else {
             success(res, response)
         }
     });
 })
-//Create a Category
-.post(function(req, res) {
+//Create a category
+.post(function(req, res, next) {
     category.create(req.body, function(err, response) {
         if(err) {
-            if(err.name === 'MongoError' && err.code === 11000) {
-                return fail(res, 'Category already exists in database');
+            console.log(err.name);
+            if(err.name === 'MongoServerError' && err.code === 11000) {
+                return fail(res, 'Category already exists');
             }
             return fail(res, err);
         } else {
             success(res, response);
         }
         res.end();
-    });
+    })
 });
 
 router.route('/:categoryID')
+.get(function(req, res) {
+    category.findById(req.params.categoryID, function(err, response) {
+        if(err) {
+            return fail(res, err);
+        } else {
+            success(res, response);
+        }
+    });
+})
 .delete(function(req, res) {
     category.deleteOne(req.params.categoryID, function(err, response) {
         if(err) {
-            fail(res, err);
+            return fail(res, err);
         } else {
             success(res, response);
         }
@@ -41,7 +53,7 @@ router.route('/:categoryID')
 
 function success(res, data) {
     if(data == null || (data instanceof Array && (data[0] == null || data[0] == 'undefined'))) {
-        fail(res, "No Data Avaliable")
+        return fail(res, "No Data Avaliable")
     } else {
         res.json({
             success: true,
@@ -49,7 +61,7 @@ function success(res, data) {
             data: data
         });
     }
-}
+} 
 
 function fail(res, err) {
     return res.status(500).send({success:false, message:err});

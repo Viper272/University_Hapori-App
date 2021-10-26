@@ -1,12 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const service = require('../models/services');
+const service = require('../models/services.js');
+
+router.use(express.json());
 
 //Get all services
 router.route('/')
 .get(function(req, res) {
     service.find({}, function(err, response) {
-        if(err) {
+	if(err) {
             return fail(res, err);
         } else {
             success(res, response)
@@ -17,22 +19,22 @@ router.route('/')
 .post(function(req, res, next) {
     service.create(req.body, function(err, response) {
         if(err) {
-            if(err.name === 'MongoError' && err.code === 11000) {
-                return fails(res, 'Service already exists in database');
+            if(err.name === 'MongoServerhError' && err.code === 11000) {
+                return fail(res, 'Service already exists');
             }
-            return fails(res, err);
+            return fail(res, err);
         } else {
             success(res, response);
         }
         res.end();
-    });
+    })
 });
 
 router.route('/:serviceID')
 .get(function(req, res) {
     service.findById(req.params.serviceID, function(err, response) {
         if(err) {
-            fail (res, err);
+            return fail(res, err);
         } else {
             success(res, response);
         }
@@ -41,7 +43,7 @@ router.route('/:serviceID')
 .delete(function(req, res) {
     service.deleteOne(req.params.serviceID, function(err, response) {
         if(err) {
-            fail(res, err);
+            return fail(res, err);
         } else {
             success(res, response);
         }
@@ -50,7 +52,7 @@ router.route('/:serviceID')
 
 function success(res, data) {
     if(data == null || (data instanceof Array && (data[0] == null || data[0] == 'undefined'))) {
-        fail(res, "No Data Avaliable")
+        return fail(res, "No Data Avaliable")
     } else {
         res.json({
             success: true,

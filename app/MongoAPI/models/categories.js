@@ -9,4 +9,4 @@ var CategorySchema = new Schema({
     }
 });
 
-module.exports = mongoose.model("Services", CategorySchema);
+module.exports = mongoose.model("Categories", CategorySchema);

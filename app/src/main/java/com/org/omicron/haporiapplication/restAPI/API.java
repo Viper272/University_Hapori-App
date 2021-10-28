@@ -1,6 +1,7 @@
 package com.org.omicron.haporiapplication.restAPI;
 
 import com.org.omicron.haporiapplication.restAPI.models.DBResponse;
+import com.org.omicron.haporiapplication.restAPI.models.DBServices;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -15,6 +16,8 @@ public interface API {
     Call<DBResponse> getAllServices();
     @GET("/services/{service}")
     Call<DBResponse> getServiceByID(@Path("service") String serviceID);
+    @GET("/services/{category}")
+    Call<DBResponse<DBServices>> getServiceByCategory(@Path("category") String categoryID);
     //endregion
 
     //region Category Methods

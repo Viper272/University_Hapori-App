@@ -17,7 +17,6 @@ import com.org.omicron.haporiapplication.databinding.FragmentSecondBinding;
 
 import java.util.ArrayList;
 
-import static com.org.omicron.haporiapplication.AnalyticsHandler.*;
 
 public class SecondFragment extends Fragment {
 
@@ -46,7 +45,7 @@ public class SecondFragment extends Fragment {
 
         binding.submitAnswers.setOnClickListener(view1 -> {
             //Submit answers to local cache/analytics handler
-                submitAnswers();
+
             //Enter app
             NavHostFragment.findNavController(SecondFragment.this).navigate(R.id.action_SecondFragment_to_categoryScrollFragment);
         });
@@ -76,11 +75,5 @@ public class SecondFragment extends Fragment {
         spinnerList.add(spinner);
     }
 
-    //Submit answers to cache/database
-    private void submitAnswers(){
-        IntroAnswerPacket packet = (IntroAnswerPacket)CreateAnalyticsPacket(Type.INTRO_ANSWER);
-        packet.setWho(spinnerList.get(0).getSelectedItem().toString());
-        Log.d("packet", packet.getWho());
-    }
 
 }

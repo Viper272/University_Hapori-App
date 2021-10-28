@@ -34,6 +34,7 @@ public class ServiceScrollFragment extends Fragment {
 
     private ServiceScrollAdapter adapter;
     private RecyclerView recyclerView;
+    private String filterCategory;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -44,6 +45,9 @@ public class ServiceScrollFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        filterCategory = getArguments().getString("category");
+        Log.i("Filter Category = ", filterCategory);
 
         recyclerView = (RecyclerView) this.getActivity().findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext(), LinearLayoutManager.VERTICAL, false));

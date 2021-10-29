@@ -3,12 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Quin Proctor/Desktop/2021 Uni/Hapori-App/app/src/main/res/drawable/listitem_category_drawable.xml" value="0.1794871794871795" />
         <entry key="..\:/Users/Quin Proctor/Desktop/2021 Uni/Hapori-App/app/src/main/res/layout/activity_main.xml" value="0.16296296296296298" />
         <entry key="..\:/Users/Quin Proctor/Desktop/2021 Uni/Hapori-App/app/src/main/res/layout/content_main.xml" value="0.1" />
         <entry key="..\:/Users/Quin Proctor/Desktop/2021 Uni/Hapori-App/app/src/main/res/layout/fragment_category_scroll.xml" value="0.19572649572649573" />
         <entry key="..\:/Users/Quin Proctor/Desktop/2021 Uni/Hapori-App/app/src/main/res/layout/fragment_first.xml" value="0.13858695652173914" />
         <entry key="..\:/Users/Quin Proctor/Desktop/2021 Uni/Hapori-App/app/src/main/res/layout/fragment_second.xml" value="0.1" />
         <entry key="..\:/Users/Quin Proctor/Desktop/2021 Uni/Hapori-App/app/src/main/res/layout/fragment_service_scroll.xml" value="0.19324894514767932" />
+        <entry key="..\:/Users/Quin Proctor/Desktop/2021 Uni/Hapori-App/app/src/main/res/layout/listitem_service_scroll.xml" value="0.16623931623931623" />
+        <entry key="..\:/Users/Quin Proctor/Desktop/2021 Uni/Hapori-App/app/src/main/res/layout/service_page.xml" value="0.152991452991453" />
         <entry key="..\:/Users/Viper/AndroidStudioProjects/HaporiApplication/app/src/main/res/layout/activity_main.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/Viper/AndroidStudioProjects/HaporiApplication/app/src/main/res/layout/content_main.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/Viper/AndroidStudioProjects/HaporiApplication/app/src/main/res/layout/fragment_first.xml" value="0.38697916666666665" />

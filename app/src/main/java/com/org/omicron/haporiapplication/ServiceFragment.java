@@ -19,6 +19,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.appcompat.app.ActionBar;
 
 import com.org.omicron.haporiapplication.databinding.ServicePageBinding;
+import com.org.omicron.haporiapplication.restAPI.models.DBServices;
 
 import java.net.URI;
 import java.util.HashMap;
@@ -26,6 +27,8 @@ import java.util.Map;
 
 public class ServiceFragment extends Fragment{
     private ServicePageBinding binding;
+    //private DBServices selectedService;
+    String serviceId;
 
     @Override
     public View onCreateView(
@@ -40,6 +43,26 @@ public class ServiceFragment extends Fragment{
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        serviceId = getArguments().getString("service");
+        Log.i("Chosen Service = ", serviceId);
+
+
+        //Want to access the database here
+
+
+        //--Set the information from the retrieved service--
+
+        //Set logo
+
+        //Set Description
+
+        //Set Map
+
+        //Set action bar title
+        ActionBar actionBar = ((AppCompatActivity)getActivity()).getSupportActionBar();
+        actionBar.setTitle("Lifeline Aotearoa");
+
+        //Set phone numbers
         binding.buttonDial.setOnClickListener(v -> {
             Map<String, String> phoneMap = new HashMap();
             phoneMap.put("Test1", "1234567890");
@@ -55,9 +78,7 @@ public class ServiceFragment extends Fragment{
 
         });
 
-        ActionBar actionBar = ((AppCompatActivity)getActivity()).getSupportActionBar();
-        actionBar.setTitle("Lifeline Aotearoa");
-
+        //Set emails
         binding.buttonEmail.setOnClickListener(v1 ->{
             Intent email = new Intent(Intent.ACTION_SENDTO);
             String uriText = "mailto:test@gmail.com";

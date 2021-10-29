@@ -38,6 +38,7 @@ public class ServiceScrollFragment extends Fragment {
     private ServiceScrollAdapter adapter;
     private RecyclerView recyclerView;
     private String filterCategory;
+    private ArrayList<DBServices> defaultList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -55,7 +56,6 @@ public class ServiceScrollFragment extends Fragment {
         recyclerView = (RecyclerView) this.getActivity().findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext(), LinearLayoutManager.VERTICAL, false));
 
-
         Call<DBResponse> call = RetrofitClient.getInstance().getApi().getAllServices();
         call.enqueue(new Callback<DBResponse>() {
             @Override
@@ -71,7 +71,7 @@ public class ServiceScrollFragment extends Fragment {
 
             @Override
             public void onFailure(Call<DBResponse> call, Throwable t) {
-                ArrayList<DBServices> defaultList = new ArrayList<>();
+                defaultList = new ArrayList<>();
                 for(int i = 0; i < 10; i++){
                     defaultList.add(new DBServices("No Connection", ""));
                 }
@@ -83,7 +83,21 @@ public class ServiceScrollFragment extends Fragment {
             }
         });
 
+        recyclerView.addOnItemTouchListener(
+                new RecyclerItemClickListener(getContext(), recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override public void onItemClick(View view, int position) {
+                        Log.d("onItemClick", String.valueOf(position));
+                        Bundle bundle = new Bundle();
+                        //bundle.putString("service", String.valueOf(((RecyclerView)view).getAdapter().getItemId(position)));
+                        bundle.putString("service", defaultList.get(position).getServiceName());
+                        NavHostFragment.findNavController(ServiceScrollFragment.this).navigate(R.id.action_serviceScrollFragment_to_serviceFragment, bundle);
+                    }
 
+                    @Override public void onLongItemClick(View view, int position) {
+
+                    }
+                })
+        );
 
     }
 }

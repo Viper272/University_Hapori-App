@@ -29,6 +29,12 @@ public class DBServices {
         this.contactDetails = contactDetails;
     }
 
+    //Constructor for no database (Default for development)
+    public DBServices(String name, String shortDescription) {
+        this.name = name;
+        this.shortDescription = shortDescription;
+    }
+
     //Getters
     public String getServiceName() {
         return name;

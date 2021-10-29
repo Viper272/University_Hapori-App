@@ -27,6 +27,8 @@ import com.org.omicron.haporiapplication.restAPI.RetrofitClient;
 import com.org.omicron.haporiapplication.restAPI.models.DBResponse;
 import com.org.omicron.haporiapplication.restAPI.models.DBServices;
 
+import java.util.ArrayList;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -54,29 +56,33 @@ public class ServiceScrollFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext(), LinearLayoutManager.VERTICAL, false));
 
 
-        if(filterCategory != null){
-            Call<DBResponse<DBServices>> call = RetrofitClient.getInstance().getApi().getServiceByCategory(filterCategory);
-        }else{
-            Call<DBResponse> call = RetrofitClient.getInstance().getApi().getAllServices();
-            call.enqueue(new Callback<DBResponse>() {
-                @Override
-                public void onResponse(Call<DBResponse> call, Response<DBResponse> response) {
-                    DBResponse dbResponse = response.body();
+        Call<DBResponse> call = RetrofitClient.getInstance().getApi().getAllServices();
+        call.enqueue(new Callback<DBResponse>() {
+            @Override
+            public void onResponse(Call<DBResponse> call, Response<DBResponse> response) {
+                DBResponse dbResponse = response.body();
 
-                    if(dbResponse.isSuccess()) {
-                        adapter = new ServiceScrollAdapter(dbResponse.getData());
-                        recyclerView.setAdapter(adapter);
-                        adapter.notifyDataSetChanged();
-                    }
+                if(dbResponse.isSuccess()) {
+                    adapter = new ServiceScrollAdapter(dbResponse.getData());
+                    recyclerView.setAdapter(adapter);
+                    adapter.notifyDataSetChanged();
                 }
+            }
 
-                @Override
-                public void onFailure(Call<DBResponse> call, Throwable t) {
-                    Toast.makeText(getActivity().getApplicationContext(), "An error has occurred", Toast.LENGTH_LONG).show();
-                    Log.e("Retro Error", t.toString());
+            @Override
+            public void onFailure(Call<DBResponse> call, Throwable t) {
+                ArrayList<DBServices> defaultList = new ArrayList<>();
+                for(int i = 0; i < 10; i++){
+                    defaultList.add(new DBServices("No Connection", ""));
                 }
-            });
-        }
+                adapter = new ServiceScrollAdapter(defaultList);
+                recyclerView.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
+                Toast.makeText(getActivity().getApplicationContext(), "An error has occurred", Toast.LENGTH_LONG).show();
+                Log.e("Retro Error", t.toString());
+            }
+        });
+
 
 
     }

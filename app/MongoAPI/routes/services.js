@@ -19,7 +19,7 @@ router.route('/')
 .post(function(req, res, next) {
     service.create(req.body, function(err, response) {
         if(err) {
-            if(err.name === 'MongoServerhError' && err.code === 11000) {
+            if(err.name === 'MongoServerError' && err.code === 11000) {
                 return fail(res, 'Service already exists');
             }
             return fail(res, err);
@@ -29,6 +29,15 @@ router.route('/')
         res.end();
     })
 });
+// .delete(function(req, res) {
+//     service.deleteMany({}, function(err, reponse) {
+//         if(err) {
+//             return fail(res, err);
+//         } else {
+//             success(res, response);
+//         }
+//     })
+// });
 
 router.route('/:serviceID')
 .get(function(req, res) {
@@ -42,6 +51,17 @@ router.route('/:serviceID')
 })
 .delete(function(req, res) {
     service.deleteOne(req.params.serviceID, function(err, response) {
+        if(err) {
+            return fail(res, err);
+        } else {
+            success(res, response);
+        }
+    })
+});
+
+router.route('/category/:categoryID')
+.get(function(req, res) {
+    service.find({tags: req.params.categoryID}, function(err, response) {
         if(err) {
             return fail(res, err);
         } else {

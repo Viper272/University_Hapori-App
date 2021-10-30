@@ -30,17 +30,17 @@ router.route('/')
         res.end();
     })
 });
+//.delete(function(req, res) {
+//     category.deleteMany({}, function(err, reponse) {
+//         if(err) {
+//             return fail(res, err);
+//         } else {
+//             success(res, response);
+//         }
+//     })
+// });
 
 router.route('/:categoryID')
-.get(function(req, res) {
-    category.findById(req.params.categoryID, function(err, response) {
-        if(err) {
-            return fail(res, err);
-        } else {
-            success(res, response);
-        }
-    });
-})
 .delete(function(req, res) {
     category.deleteOne(req.params.categoryID, function(err, response) {
         if(err) {

@@ -16,7 +16,7 @@
     <string name="next">Continue To App</string>
 
     <!-- Fragment 2 -->
-    <string name="question_header">What\'s wrong?</string>
+    <string name="question_header">Please answer some quesions about the person who is looking for support</string>
 
     <string-array name="array_forWho">
         <item>Who is this for?</item>

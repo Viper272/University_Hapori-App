@@ -1,8 +1,6 @@
 package com.org.omicron.haporiapplication;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,10 +37,6 @@ public class SecondFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        //Already have navigation. This button should enter the app
-//        binding.submitAnswers.setOnClickListener(view1 -> NavHostFragment.findNavController(SecondFragment.this)
-//                .navigate(R.id.action_SecondFragment_to_FirstFragment));
-
         binding.submitAnswers.setOnClickListener(view1 -> {
             //Submit answers to local cache/analytics handler
 
@@ -54,7 +48,6 @@ public class SecondFragment extends Fragment {
         createSpinner(view, R.id.spinner_age, R.array.array_age);
         createSpinner(view, R.id.spinner_gender, R.array.array_gender);
         createSpinner(view, R.id.spinner_ethnicity, R.array.array_ethnicity);
-        createSpinner(view, R.id.spinner_category, R.array.array_category);
     }
 
     @Override

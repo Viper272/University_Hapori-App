@@ -15,20 +15,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.org.omicron.haporiapplication.MainActivity;
 import com.org.omicron.haporiapplication.R;
 import com.org.omicron.haporiapplication.databinding.FragmentCategoryScrollBinding;
 import com.org.omicron.haporiapplication.restAPI.RetrofitClient;
 import com.org.omicron.haporiapplication.restAPI.models.DBCategory;
 import com.org.omicron.haporiapplication.restAPI.models.DBResponse;
-import com.org.omicron.haporiapplication.restAPI.models.DBServices;
-import com.org.omicron.haporiapplication.serviceScroll.ServiceScrollAdapter;
+
 
 import androidx.navigation.fragment.NavHostFragment;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.InputStream;
 import java.net.URL;

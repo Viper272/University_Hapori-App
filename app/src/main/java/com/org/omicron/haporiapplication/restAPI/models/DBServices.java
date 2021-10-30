@@ -1,10 +1,14 @@
 package com.org.omicron.haporiapplication.restAPI.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class DBServices {
+public class DBServices implements Parcelable {
 
     @SerializedName("_id")
     private String ID;
@@ -18,6 +22,13 @@ public class DBServices {
 
     @SerializedName("contact")
     private List<DBServiceContactDetails> contactDetails;
+
+    @SerializedName("tags")
+    private ArrayList<String> tags;
+
+    public ArrayList<String> getTags() {
+        return tags;
+    }
 
 
     public DBServices(String ID, String serviceName, String shortDesc, String fullDescription, List<DBServiceContactDetails> contactDetails) {
@@ -56,6 +67,41 @@ public class DBServices {
     public void setFullDesc(String fullDesc) {
         this.fullDescription = fullDesc;
     }
+
+
+    protected DBServices(Parcel in) {
+        ID = in.readString();
+        name = in.readString();
+        shortDescription = in.readString();
+        fullDescription = in.readString();
+        tags = in.createStringArrayList();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(ID);
+        dest.writeString(name);
+        dest.writeString(shortDescription);
+        dest.writeString(fullDescription);
+        dest.writeStringList(tags);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<DBServices> CREATOR = new Creator<DBServices>() {
+        @Override
+        public DBServices createFromParcel(Parcel in) {
+            return new DBServices(in);
+        }
+
+        @Override
+        public DBServices[] newArray(int size) {
+            return new DBServices[size];
+        }
+    };
 
     class DBServiceContactDetails {
         @SerializedName("_id")

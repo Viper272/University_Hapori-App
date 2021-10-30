@@ -11,14 +11,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.org.omicron.haporiapplication.MainActivity;
 import com.org.omicron.haporiapplication.R;
-import com.org.omicron.haporiapplication.SecondFragment;
 import com.org.omicron.haporiapplication.databinding.FragmentCategoryScrollBinding;
+import com.org.omicron.haporiapplication.restAPI.RetrofitClient;
+import com.org.omicron.haporiapplication.restAPI.models.DBCategory;
+import com.org.omicron.haporiapplication.restAPI.models.DBResponse;
+import com.org.omicron.haporiapplication.restAPI.models.DBServices;
+import com.org.omicron.haporiapplication.serviceScroll.ServiceScrollAdapter;
+
 import androidx.navigation.fragment.NavHostFragment;
 
 import org.json.JSONArray;
@@ -28,12 +33,17 @@ import org.json.JSONObject;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class CategoryScrollFragment extends Fragment {
     private CategoryScrollAdapter adapter;
     private RecyclerView recyclerView;
-    private ArrayList<CategoryListItem> categoryList = new ArrayList<>();
+    private List<DBCategory> categoryList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -45,54 +55,43 @@ public class CategoryScrollFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        recyclerView = (RecyclerView) this.getActivity().findViewById(R.id.categoryRecyclerView);
+        recyclerView = this.getActivity().findViewById(R.id.categoryRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext(), LinearLayoutManager.VERTICAL, false));
 
-        adapter = new CategoryScrollAdapter(categoryList, this);
-        recyclerView.setAdapter(adapter);
+        Call<DBResponse<DBCategory>> call = RetrofitClient.getInstance().getApi().getAllCategories();
+        call.enqueue(new Callback<DBResponse<DBCategory>>() {
+            @Override
+            public void onResponse(Call<DBResponse<DBCategory>> call, Response<DBResponse<DBCategory>> response) {
+                DBResponse dbResponse = response.body();
 
-        if(categoryList.isEmpty()){
-
-            //Retrieve categories from database
-            //Access MainActivity task to run network process
-            String JSON = ((MainActivity)getActivity()).getCategories();
-            Log.i("CategoryJSON", JSON);
-            //Need to use JSON here
-            JSONArray JSON_Categories = new JSONArray();
-
-            //Before database is setup
-            if(JSON_Categories.length() == 0){
-                for (int i = 0; i < 8; i++) {
-                    categoryList.add(new CategoryListItem(String.format("Category %1$d", i)));
+                if(dbResponse.isSuccess()) {
+                    categoryList = dbResponse.getData();
+                    adapter = new CategoryScrollAdapter(categoryList);
+                    recyclerView.setAdapter(adapter);
+                    adapter.notifyDataSetChanged();
                 }
             }
 
-            //Iterate and create category views
-            for(int i = 0; i < JSON_Categories.length(); i++){
-                try {
-                    JSONObject category = JSON_Categories.getJSONObject(i);
-
-                    String title = (String)category.get("title");
-                    String URL = (String)category.get("logo");
-
-                    Drawable logo = GetImageFromUrl(URL);
-                    categoryList.add(new CategoryListItem(String.format("Category %1$d", title), logo));
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
+            @Override
+            public void onFailure(Call<DBResponse<DBCategory>> call, Throwable t) {
+                categoryList = new ArrayList<>();
+                for(int i = 0; i < 10; i++){
+                    categoryList.add(new DBCategory("No Connection"));
                 }
+                adapter = new CategoryScrollAdapter(categoryList);
+                recyclerView.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
+                Toast.makeText(getActivity().getApplicationContext(), "An error has occurred", Toast.LENGTH_LONG).show();
+                Log.e("Retro Error", t.toString());
             }
-
-
-            adapter.notifyDataSetChanged();
-        }
+        });
 
         recyclerView.addOnItemTouchListener(
                 new RecyclerItemClickListener(getContext(), recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
                         Log.d("onItemClick", categoryList.get(position).getCategoryName());
                         Bundle bundle = new Bundle();
-                        bundle.putString("category", categoryList.get(position).getCategoryName());
+                        bundle.putParcelable("category", categoryList.get(position));
                         NavHostFragment.findNavController(CategoryScrollFragment.this).navigate(R.id.action_categoryScrollFragment_to_serviceScrollFragment, bundle);
                     }
 

@@ -23,7 +23,9 @@ import com.org.omicron.haporiapplication.R;
 import com.org.omicron.haporiapplication.categoryScroll.CategoryScrollFragment;
 import com.org.omicron.haporiapplication.categoryScroll.RecyclerItemClickListener;
 import com.org.omicron.haporiapplication.databinding.FragmentServiceScrollBinding;
+import com.org.omicron.haporiapplication.restAPI.API;
 import com.org.omicron.haporiapplication.restAPI.RetrofitClient;
+import com.org.omicron.haporiapplication.restAPI.models.DBCategory;
 import com.org.omicron.haporiapplication.restAPI.models.DBResponse;
 import com.org.omicron.haporiapplication.restAPI.models.DBServices;
 
@@ -38,11 +40,14 @@ public class ServiceScrollFragment extends Fragment {
 
     private ServiceScrollAdapter adapter;
     private RecyclerView recyclerView;
-    private String filterCategory;
+    private DBCategory filterCategory;
     private List<DBServices> servicesList;
+
+    API server;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        server = RetrofitClient.getInstance().getApi();
         // Inflate the layout for this fragment
         return FragmentServiceScrollBinding.inflate(inflater, container, false).getRoot();
     }
@@ -51,17 +56,29 @@ public class ServiceScrollFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        filterCategory = getArguments().getString("category");
-        Log.i("Filter Category = ", filterCategory);
+        filterCategory = getArguments().getParcelable("category");
+        Log.i("Filter Category = ", filterCategory.getCategoryName());
 
         recyclerView = (RecyclerView) this.getActivity().findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext(), LinearLayoutManager.VERTICAL, false));
 
-        Call<DBResponse> call = RetrofitClient.getInstance().getApi().getAllServices();
-        call.enqueue(new Callback<DBResponse>() {
+        Call<DBResponse<DBServices>> call;
+
+        if(filterCategory.getCategoryName().equals("All")) {
+            call = server.getAllServices();
+        } else {
+            call = server.getServiceByCategory(filterCategory.getCategoryName());
+        }
+
+        call.enqueue(new Callback<DBResponse<DBServices>>() {
             @Override
-            public void onResponse(Call<DBResponse> call, Response<DBResponse> response) {
+            public void onResponse(Call<DBResponse<DBServices>> call, Response<DBResponse<DBServices>> response) {
                 DBResponse dbResponse = response.body();
+
+                if(dbResponse == null) {
+                    onFailure(call, new Throwable());
+                    return;
+                }
 
                 if(dbResponse.isSuccess()) {
                     servicesList = dbResponse.getData();
@@ -72,7 +89,7 @@ public class ServiceScrollFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<DBResponse> call, Throwable t) {
+            public void onFailure(Call<DBResponse<DBServices>> call, Throwable t) {
                 servicesList = new ArrayList<>();
                 for(int i = 0; i < 10; i++){
                     servicesList.add(new DBServices("No Connection", ""));

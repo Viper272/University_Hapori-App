@@ -14,12 +14,12 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.org.omicron.haporiapplication.R;
+import com.org.omicron.haporiapplication.restAPI.models.DBCategory;
 
 import java.util.List;
 
 public class CategoryScrollAdapter extends RecyclerView.Adapter<CategoryScrollAdapter.CategoryHolder>{
-    private final List<CategoryListItem> items;
-    private Fragment fragment;
+    private final List<DBCategory> items;
 
 //    public static CategoryScrollAdapter newInstance(Context context) {
 //        List<CategoryListItem> items = new ArrayList<>();
@@ -31,9 +31,8 @@ public class CategoryScrollAdapter extends RecyclerView.Adapter<CategoryScrollAd
 //    }
 
 
-    public CategoryScrollAdapter(List<CategoryListItem> items, Fragment fragment) {
+    public CategoryScrollAdapter(List<DBCategory> items) {
         this.items = items;
-        this.fragment = fragment;
     }
 
     @NonNull
@@ -45,9 +44,9 @@ public class CategoryScrollAdapter extends RecyclerView.Adapter<CategoryScrollAd
 
     @Override
     public void onBindViewHolder(@NonNull CategoryScrollAdapter.CategoryHolder holder, int position) {
-        CategoryListItem item = items.get(position);
+        DBCategory item = items.get(position);
         holder.setCategoryName(item.getCategoryName());
-        holder.setCategoryLogo(item.getCategoryImage());
+//        holder.setCategoryLogo(item.getCategoryImage());
     }
 
     @Override

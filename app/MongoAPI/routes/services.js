@@ -30,7 +30,7 @@ router.route('/')
     })
 });
 // .delete(function(req, res) {
-//     service.deleteMany({}, function(err, reponse) {
+//     service.deleteMany({}, function(err, response) {
 //         if(err) {
 //             return fail(res, err);
 //         } else {
@@ -72,7 +72,7 @@ router.route('/category/:categoryID')
 
 function success(res, data) {
     if(data == null || (data instanceof Array && (data[0] == null || data[0] == 'undefined'))) {
-        return fail(res, "No Data Avaliable")
+        return fail(res, "No Data Available")
     } else {
         res.json({
             success: true,

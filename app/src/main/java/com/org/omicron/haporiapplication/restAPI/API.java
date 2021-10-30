@@ -1,5 +1,6 @@
 package com.org.omicron.haporiapplication.restAPI;
 
+import com.org.omicron.haporiapplication.restAPI.models.DBCategory;
 import com.org.omicron.haporiapplication.restAPI.models.DBResponse;
 import com.org.omicron.haporiapplication.restAPI.models.DBServices;
 
@@ -13,15 +14,15 @@ public interface API {
 
     //region Service Methods
     @GET("/services")
-    Call<DBResponse> getAllServices();
+    Call<DBResponse<DBServices>> getAllServices();
     @GET("/services/{service}")
-    Call<DBResponse> getServiceByID(@Path("service") String serviceID);
-    @GET("/services/{category}")
+    Call<DBResponse<DBServices>> getServiceByID(@Path("service") String serviceID);
+    @GET("/services/category/{category}")
     Call<DBResponse<DBServices>> getServiceByCategory(@Path("category") String categoryID);
     //endregion
 
     //region Category Methods
     @GET("/categories")
-    Call<DBResponse> getAllCategories();
+    Call<DBResponse<DBCategory>> getAllCategories();
     //endregion
 }

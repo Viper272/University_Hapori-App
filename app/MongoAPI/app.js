@@ -20,7 +20,8 @@ mongoose.connect(
         let server = app.listen(12346, () => {
             console.log("Listening at", server.address().address, server.address().port);
         });
-    });
+    }
+);
 
 
 //WEBSITES:

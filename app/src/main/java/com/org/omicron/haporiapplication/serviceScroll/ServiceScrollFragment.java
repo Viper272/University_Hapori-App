@@ -25,6 +25,9 @@ import com.org.omicron.haporiapplication.categoryScroll.RecyclerItemClickListene
 import com.org.omicron.haporiapplication.databinding.FragmentServiceScrollBinding;
 import com.org.omicron.haporiapplication.restAPI.RetrofitClient;
 import com.org.omicron.haporiapplication.restAPI.models.DBResponse;
+import com.org.omicron.haporiapplication.restAPI.models.DBServices;
+
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -34,6 +37,8 @@ public class ServiceScrollFragment extends Fragment {
 
     private ServiceScrollAdapter adapter;
     private RecyclerView recyclerView;
+    private String filterCategory;
+    private ArrayList<DBServices> defaultList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -44,6 +49,9 @@ public class ServiceScrollFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        filterCategory = getArguments().getString("category");
+        Log.i("Filter Category = ", filterCategory);
 
         recyclerView = (RecyclerView) this.getActivity().findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext(), LinearLayoutManager.VERTICAL, false));
@@ -63,9 +71,33 @@ public class ServiceScrollFragment extends Fragment {
 
             @Override
             public void onFailure(Call<DBResponse> call, Throwable t) {
+                defaultList = new ArrayList<>();
+                for(int i = 0; i < 10; i++){
+                    defaultList.add(new DBServices("No Connection", ""));
+                }
+                adapter = new ServiceScrollAdapter(defaultList);
+                recyclerView.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
                 Toast.makeText(getActivity().getApplicationContext(), "An error has occurred", Toast.LENGTH_LONG).show();
                 Log.e("Retro Error", t.toString());
             }
         });
+
+        recyclerView.addOnItemTouchListener(
+                new RecyclerItemClickListener(getContext(), recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override public void onItemClick(View view, int position) {
+                        Log.d("onItemClick", String.valueOf(position));
+                        Bundle bundle = new Bundle();
+                        //bundle.putString("service", String.valueOf(((RecyclerView)view).getAdapter().getItemId(position)));
+                        bundle.putString("service", defaultList.get(position).getServiceName());
+                        NavHostFragment.findNavController(ServiceScrollFragment.this).navigate(R.id.action_serviceScrollFragment_to_serviceFragment, bundle);
+                    }
+
+                    @Override public void onLongItemClick(View view, int position) {
+
+                    }
+                })
+        );
+
     }
 }

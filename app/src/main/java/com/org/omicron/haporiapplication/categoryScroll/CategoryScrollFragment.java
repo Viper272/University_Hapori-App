@@ -90,8 +90,10 @@ public class CategoryScrollFragment extends Fragment {
         recyclerView.addOnItemTouchListener(
                 new RecyclerItemClickListener(getContext(), recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
-                        Log.d("onItemClick", String.valueOf(position));
-                        NavHostFragment.findNavController(CategoryScrollFragment.this).navigate(R.id.action_categoryScrollFragment_to_serviceScrollFragment);
+                        Log.d("onItemClick", categoryList.get(position).getCategoryName());
+                        Bundle bundle = new Bundle();
+                        bundle.putString("category", categoryList.get(position).getCategoryName());
+                        NavHostFragment.findNavController(CategoryScrollFragment.this).navigate(R.id.action_categoryScrollFragment_to_serviceScrollFragment, bundle);
                     }
 
                     @Override public void onLongItemClick(View view, int position) {

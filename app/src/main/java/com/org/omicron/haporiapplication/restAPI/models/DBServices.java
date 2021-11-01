@@ -41,9 +41,10 @@ public class DBServices implements Parcelable {
     }
 
     //Constructor for no database (Default for development)
-    public DBServices(String name, String shortDescription) {
+    public DBServices(String name, String shortDescription, String fullDescription) {
         this.name = name;
         this.shortDescription = shortDescription;
+        this.fullDescription = fullDescription;
     }
 
     //Getters

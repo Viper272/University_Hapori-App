@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.PopupMenu;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.MenuRes;
@@ -28,7 +29,7 @@ import java.util.Map;
 public class ServiceFragment extends Fragment{
     private ServicePageBinding binding;
     //private DBServices selectedService;
-    String serviceId;
+    private DBServices service;
 
     @Override
     public View onCreateView(
@@ -43,8 +44,10 @@ public class ServiceFragment extends Fragment{
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        serviceId = getArguments().getString("service");
-        Log.i("Chosen Service = ", serviceId);
+//        serviceId = getArguments().getString("service");
+//        Log.i("Chosen Service = ", serviceId);
+
+        service = getArguments().getParcelable("service");
 
 
         //Want to access the database here
@@ -55,12 +58,14 @@ public class ServiceFragment extends Fragment{
         //Set logo
 
         //Set Description
+        binding.serviceDescription.setText(service.getFullDesc());
 
         //Set Map
 
         //Set action bar title
         ActionBar actionBar = ((AppCompatActivity)getActivity()).getSupportActionBar();
-        actionBar.setTitle("Lifeline Aotearoa");
+        //actionBar.setTitle("Lifeline Aotearoa");
+        actionBar.setTitle(service.getServiceName());
 
         //Set phone numbers
         binding.buttonDial.setOnClickListener(v -> {

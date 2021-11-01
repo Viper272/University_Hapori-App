@@ -91,9 +91,9 @@ public class ServiceScrollFragment extends Fragment {
             @Override
             public void onFailure(Call<DBResponse<DBServices>> call, Throwable t) {
                 servicesList = new ArrayList<>();
-                for(int i = 0; i < 10; i++){
-                    servicesList.add(new DBServices("No Connection", ""));
-                }
+                servicesList.add(new DBServices("No Connection1", "First", "This is the first service in the offline list"));
+                servicesList.add(new DBServices("No Connection2", "Second", "This is the second service in the offline list"));
+                servicesList.add(new DBServices("No Connection3", "Third", "This is the third service in the offline list"));
                 adapter = new ServiceScrollAdapter(servicesList);
                 recyclerView.setAdapter(adapter);
                 adapter.notifyDataSetChanged();

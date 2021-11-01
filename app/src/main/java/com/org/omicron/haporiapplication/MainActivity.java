@@ -71,20 +71,4 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
-    public String getCategories(){
-        String URL = "Insert URL here";
-        String response = new GetCategoriesTask().doInBackground(URL);
-        return response;
-    }
-
-    private class GetCategoriesTask extends AsyncTask<String, Integer, String> {
-
-        @Override
-        protected String doInBackground(String... strings) {
-            String response = "Pretend this is from the database";
-            return response;
-        }
-
-    }
-
 }
